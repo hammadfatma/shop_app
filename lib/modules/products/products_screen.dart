@@ -50,6 +50,12 @@ class ProductsScreen extends StatelessWidget {
               items: homeModel.data.banners
                   .map((e) => Image(
                         image: NetworkImage(e.image),
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        },
                         width: double.infinity,
                         fit: BoxFit.cover,
                       ))
@@ -145,6 +151,12 @@ class ProductsScreen extends StatelessWidget {
               children: [
                 Image(
                   image: NetworkImage(model.image),
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
                   width: double.infinity,
                   height: 200.0,
                 ),
@@ -229,6 +241,12 @@ class ProductsScreen extends StatelessWidget {
         children: [
           Image(
             image: NetworkImage(model.image),
+            loadingBuilder: (context, child, loadingProgress) {
+              if (loadingProgress == null) return child;
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            },
             height: 100.0,
             width: 100.0,
             fit: BoxFit.cover,

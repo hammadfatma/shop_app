@@ -36,7 +36,7 @@ class ShopErrorGetFavoritesState extends ShopStates {}
 class ShopLoadingUserDataState extends ShopStates {}
 
 class ShopSuccessUserDataState extends ShopStates {
-  final LoginModel loginModel;
+  final AuthModel loginModel;
 
   ShopSuccessUserDataState(this.loginModel);
 }
@@ -45,8 +45,12 @@ class ShopErrorUserDataState extends ShopStates {}
 
 class ShopLoadingUpdateUserState extends ShopStates {}
 
+class ShopProfileImagePickedSuccessState extends ShopStates {}
+
+class ShopProfileImagePickedErrorState extends ShopStates {}
+
 class ShopSuccessUpdateUserState extends ShopStates {
-  final LoginModel loginModel;
+  final AuthModel loginModel;
 
   ShopSuccessUpdateUserState(this.loginModel);
 }

@@ -1,16 +1,16 @@
-class LoginModel {
+class AuthModel {
   final bool status;
   final String? message;
   final UserData? data;
 
-  LoginModel(
+  AuthModel(
     this.status,
     this.message,
     this.data,
   );
   //named constructor
-  factory LoginModel.fromJson(Map<String, dynamic> json) {
-    return LoginModel(
+  factory AuthModel.fromJson(Map<String, dynamic> json) {
+    return AuthModel(
       json['status'],
       json['message'],
       json['data'] != null ? UserData.fromJson(json['data']) : null,
@@ -25,7 +25,7 @@ class UserData {
   final String phone;
   final String image;
   final int? points;
-  final int credit;
+  final int? credit;
   final String token;
 
   UserData(

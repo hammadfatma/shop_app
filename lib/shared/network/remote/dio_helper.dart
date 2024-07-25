@@ -1,66 +1,60 @@
 import 'package:dio/dio.dart';
 
 class DioHelper {
-  static late Dio dio;
-  static init() {
-    dio = Dio(
-      BaseOptions(
-        baseUrl: 'https://student.valuxapps.com/api/',
-        receiveDataWhenStatusError: true,
-      ),
-    );
-  }
+  final String _baseUrl = 'https://student.valuxapps.com/api/';
+  final Dio _dio;
+  DioHelper(this._dio);
 
-  static Future<Response> getData({
+  Future<Response> getData({
     required String url,
     Map<String, dynamic>? query,
     String lang = 'en',
     String? token,
   }) async {
-    dio.options.headers = {
+    _dio.options.headers = {
       'lang': lang,
       'Authorization': token ?? '',
       'Content-Type': 'application/json',
     };
-    return await dio.get(
-      url,
+    return await _dio.get(
+      '$_baseUrl$url',
       queryParameters: query,
     );
   }
 
-  static Future<Response> postData({
+  Future<Response> postData({
     required String url,
     required Map<String, dynamic> data,
     Map<String, dynamic>? query,
     String lang = 'en',
     String? token,
   }) async {
-    dio.options.headers = {
+    _dio.options.headers = {
       'lang': lang,
       'Authorization': token ?? '',
       'Content-Type': 'application/json',
     };
-    return dio.post(
-      url,
+    return _dio.post(
+      '$_baseUrl$url',
       queryParameters: query,
       data: data,
     );
   }
 
-  static Future<Response> putData({
+  Future<Response> putData({
     required String url,
-    required Map<String, dynamic> data,
+    required dynamic data,
     Map<String, dynamic>? query,
     String lang = 'en',
     String? token,
   }) async {
-    dio.options.headers = {
+    _dio.options.headers = {
       'lang': lang,
       'Authorization': token ?? '',
       'Content-Type': 'application/json',
     };
-    return dio.put(
-      url,
+    return _dio.put(
+      '$_baseUrl$url',
       queryParameters: query,
       data: data,
     );
